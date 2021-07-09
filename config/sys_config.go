@@ -17,8 +17,10 @@ func init() {
 }
 
 type config struct {
-	Ip string `yaml:"ip"`
-	Db DBConf `yaml:db`
+	FilePath string `yaml:"filePath"`
+	Author   string `yaml:"author"`
+	Tables   string `yaml:tables`
+	Db       DBConf `yaml:db`
 }
 
 type DBConf struct {
