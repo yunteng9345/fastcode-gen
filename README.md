@@ -1,1 +1,2 @@
-fastcode-gen
+# fastcode-gen
+Quickly generate Java CRUD
