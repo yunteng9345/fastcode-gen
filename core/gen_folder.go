@@ -8,21 +8,19 @@ import (
 )
 
 func generateFolder(filePath string) {
-	filePaths := []string{filePath + "model", filePath + "service", filePath + "mapper", filePath + "xml"}
+	filePaths := []string{filePath + "model", filePath + "service", filePath + "service/impl", filePath + "mapper", filePath + "xml"}
 	for _, folderPath := range filePaths {
 		exist, err := utils.PathExists(folderPath)
 		if err != nil {
 			log.Fatal(err.Error())
 		} else {
 			if exist {
-				log.Println(folderPath, "文件夹已存在！")
+				continue
 			} else {
 				// 文件夹名称，权限
 				err := os.Mkdir(folderPath, os.ModePerm)
 				if err != nil {
 					log.Println(folderPath+"文件夹创建失败：", err)
-				} else {
-					log.Println(folderPath + "文件夹创建成功！")
 				}
 			}
 		}

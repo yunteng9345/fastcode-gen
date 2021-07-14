@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jlpay.manage.sim.db.mapper.{{ .Name}}Mapper">
+	<resultMap id="BaseResultMap" type="com.jlpay.manage.sim.db.model.{{ .Name}}">
+		<!--@mbg.generated-->
+		{{range $i, $el := .TableStruct}}{{if eq $i 0}} <id column="{{ .OriColumn}}" jdbcType="VARCHAR" property="{{ .Column}}"/>
+		{{end}}{{if gt $i 0}} <result column="{{ .OriColumn}}" jdbcType="VARCHAR" property="{{ .Column}}"/>
+		{{end}}{{end}}
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		<!--@mbg.generated-->
+		{{range $i, $el := .TableStruct}}{{if $i}},{{end}}{{$el.OriColumn}} {{end}}
+	</sql>
+
+	<select id="getById" parameterType="java.lang.String" resultMap="BaseResultMap">
+		<!--@mbg.generated-->
+		select
+			<include refid="Base_Column_List"/>
+		from {{ .TableName}}
+		{{range $i, $el := .TableStruct}}{{if eq $i 0}} where {{ .OriColumn}} = #{ {{ .Column}},jdbcType=VARCHAR}
+		{{end}}{{end}}
+	</select>
+
+	<insert id="insert" parameterType="com.jlpay.manage.sim.db.model.{{ .Name}}">
+		<!--@mbg.generated-->
+		insert into {{ .TableName}}( {{range $i, $el := .TableStruct}}{{if $i}},{{end}}{{$el.OriColumn}} {{end}})
+		values(
+		{{range $i, $el := .TableStruct}}{{if $i}},{{end}} #{ {{$el.Column}}, jdbcType=VARCHAR}  {{end}})
+	</insert>
+
+	<update id="updateNotNull" parameterType="com.jlpay.manage.sim.db.model.{{ .Name}}">
+		<!--@mbg.generated-->
+		update {{ .TableName}}
+		<set>
+			{{range $i, $el := .TableStruct}}{{if gt $i 0}}<if test="{{$el.Column}} != null ">
+			    {{$el.OriColumn}} = #{ {{$el.Column}},jdbcType=VARCHAR},
+			</if>
+			{{end}} {{end}}
+		</set> {{range $i, $el := .TableStruct}} {{if eq $i 0}}
+		where {{$el.OriColumn}} = #{ {{$el.Column}},jdbcType=VARCHAR}
+		{{end}} {{end}}
+	</update>
+
+	<update id="update" parameterType="com.jlpay.manage.sim.db.model.{{ .Name}}">
+		<!--@mbg.generated-->
+		update {{ .TableName}}
+		<set> {{range $i, $el := .TableStruct}}{{if $i }},{{end}}
+			{{$el.OriColumn}} = #{ {{$el.Column}},jdbcType=VARCHAR}{{end}}
+		</set> {{range $i, $el := .TableStruct}} {{if eq $i 0}}
+		where {{$el.OriColumn}} = #{ {{$el.Column}},jdbcType=VARCHAR}
+		{{end}} {{end}}
+	</update>
+
+	<select id="list{{ .Name}}Temp" resultType="com.jlpay.manage.sim.db.model.{{ .Name}}">
+		SELECT
+		{{range $i, $el := .TableStruct}}{{if $i}},{{end}} {{$el.OriColumn}} AS {{$el.Column}}  {{end}}
+		FROM {{ .TableName}}
+		<WHERE>
+			{{range $i, $el := .TableStruct}}{{if gt $i 0}}<if test="{{$el.Column}} != null ">
+					{{$el.OriColumn}} = #{ {{$el.Column}},jdbcType=VARCHAR},
+				</if>
+			{{end}} {{end}}
+		</WHERE>
+	</select>
+</mapper>

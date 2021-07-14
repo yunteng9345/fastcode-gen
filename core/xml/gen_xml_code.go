@@ -7,8 +7,8 @@ import (
 	"text/template"
 )
 
-func GenServiceCode(table db.Table) {
-	tmpl, err := template.ParseFiles("./template/IService.java")
+func GenXmlCode(table db.Table) {
+	tmpl, err := template.ParseFiles("./template/XXXMapper.xml")
 	if err != nil {
 		fmt.Println("Error happened..")
 	}

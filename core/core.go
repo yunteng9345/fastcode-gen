@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fastcode-gen/core/service"
+	"fastcode-gen/core/xml"
 	"fastcode-gen/utils"
 	"log"
 	"strings"
@@ -18,9 +18,9 @@ func main() {
 	tables := GetTable()
 	for _, table := range tables {
 		//model.GenModelCode(table)
-		service.GenServiceCode(table)
-		//mapper.GenServiceCode(table)
-		//xml.GenServiceCode(table)
+		//service.GenServiceCode(table)
+		//mapper.GenMapperCode(table)
+		xml.GenXmlCode(table)
 		//controller.GenServiceCode(table)
 	}
 }
@@ -45,7 +45,10 @@ func GetTable() []db.Table {
 			if err != nil {
 				log.Fatal(err)
 			}
-			table.Name = table.Name[1:]
+			table.TableName = table.Name
+			tableStruct.OriColumn = strings.ToUpper(tableStruct.Column)
+			table.Name = utils.Case2Camel(table.Name)[1:]
+			table.LowName = utils.LowerFirst(table.Name)
 			tableStruct.Column = utils.LowerFirst(strings.ReplaceAll(tableStruct.Column, "_", ""))
 			tableStruct.Type = utils.GetType(tableStruct.Type)
 			tableStructs = append(tableStructs, tableStruct)

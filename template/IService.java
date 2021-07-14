@@ -15,13 +15,13 @@ public interface {{ .Name }}Service {
 	
 	/**
 	 * 保存
-	 * @param ${table}
+	 * @param {{.LowName}}
 	 */
-	public void save({{.Name}} ${table});
+	public void save({{.Name}} {{.LowName}});
 	
 	/**
 	 * 修改
-	 * @param ${table}
+	 * @param {{.LowName}}
 	 */
-	public void update({{.Name}} ${table});
+	public void update({{.Name}} {{.LowName}});
 }

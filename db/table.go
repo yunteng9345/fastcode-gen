@@ -2,13 +2,19 @@ package db
 
 // table struct
 type Table struct {
-	Author      string
-	Name        string
+	Author string
+	// SIM_CARD_DEVICE_PKG
+	TableName string
+	// SimCardDevicePkg
+	Name string
+	// simCardDevicePkg
+	LowName     string
 	TableStruct []TableStruct
 }
 
 type TableStruct struct {
-	Column  string
-	Type    string
-	Comment string
+	Column    string
+	OriColumn string
+	Type      string
+	Comment   string
 }

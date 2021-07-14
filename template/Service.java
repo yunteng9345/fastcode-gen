@@ -1,8 +1,8 @@
 package ${packageName}.db.service;
 
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
-import ${packageName}.db.mapper.${Table}Mapper;
-import ${packageName}.db.model.${Table};
+import ${packageName}.db.mapper.{{ .Name }}Mapper;
+import ${packageName}.db.model.{{ .Name }};
 import lombok.extern.slf4j.Slf4j;
 import com.jlpay.utils.page.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,37 +11,37 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 /**
- * @Author：${author}
+ * @Author：{{ .Author}}
  * @CreateTime：${createTime}
  * @Description: ${remark}
  */
 @Slf4j
 @Service
-public class ${Table}Service {
+public class I{{ .Name }}Service {
 
 	@Autowired
-    private ${Table}Mapper mapper;
+    private {{ .Name }}Mapper mapper;
 
-	public ${Table} get${Table}(String id) {
+	public {{ .Name }} get{{ .Name }}(String id) {
 		return mapper.getById(id);
 	}
 	
-	public void save(${Table} ${table}){
-		${table}.setCreateTime(new Date());
-		${table}.setUpdateTime(new Date());
-		mapper.insert(${table});
+	public void save({{ .Name }} {{ .LowName }}){
+		{{ .LowName }}.setCreateTime(new Date());
+		{{ .LowName }}.setUpdateTime(new Date());
+		mapper.insert({{ .LowName }});
 	}
 
-	public void updateNotNull(${Table} ${table}) {
-		mapper.updateNotNull(${table});
+	public void updateNotNull({{ .Name }} {{ .LowName }}) {
+		mapper.updateNotNull({{ .LowName }});
 	}
 
-	public List<${Table}> list${Table}(${Table} queryParam) {
-		return mapper.list${Table}(queryParam);
+	public List<{{ .Name }}> list{{ .Name }}({{ .Name }} queryParam) {
+		return mapper.list{{ .Name }}(queryParam);
 	}
 	
-	public void list${Table}ByPage(${Table} queryParam, Pagination pagination) {
-		List<${Table}> list = mapper.list${Table}ByPage(queryParam, pagination.getPageBounds());
+	public void list{{ .Name }}ByPage({{ .Name }} queryParam, Pagination pagination) {
+		List<{{ .Name }}> list = mapper.list{{ .Name }}ByPage(queryParam, pagination.getPageBounds());
 		pagination.setRows(list);
 		try {
 			PageList pageList = (PageList)list;
