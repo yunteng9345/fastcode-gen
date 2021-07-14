@@ -1,7 +1,4 @@
-package ${packageName}.db.mapper;
 
-import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
-import ${packageName}.db.model.{{.Name}};
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

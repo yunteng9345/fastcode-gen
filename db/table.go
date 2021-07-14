@@ -13,8 +13,11 @@ type Table struct {
 }
 
 type TableStruct struct {
-	Column    string
-	OriColumn string
-	Type      string
-	Comment   string
+	Column         string
+	OriColumn      string
+	Name           string
+	FirstUpperName string
+	LowName        string
+	Type           string
+	Comment        string
 }

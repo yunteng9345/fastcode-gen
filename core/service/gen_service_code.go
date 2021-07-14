@@ -9,7 +9,7 @@ import (
 )
 
 func GenServiceCode(table db.Table) {
-	tmpl, err := template.ParseFiles("./template/IService.java")
+	tmpl, err := template.ParseFiles("./template/XXXIService.java")
 	if err != nil {
 		fmt.Println("Error happened..")
 	}
@@ -22,11 +22,11 @@ func GenServiceCode(table db.Table) {
 	tmpl.Execute(out, table)
 	//tmpl.Execute(os.Stdout, table)
 
-	tmplService, err := template.ParseFiles("./template/Service.java")
+	tmplService, err := template.ParseFiles("./template/XXXServiceImpl.java")
 	if err != nil {
 		fmt.Println("Error happened..")
 	}
-	outImpl, err := os.Create("./out/service/impl/" + table.Name + "Service.java")
+	outImpl, err := os.Create("./out/service/impl/" + table.Name + "ServiceImpl.java")
 	defer outImpl.Close()
 	if err != nil {
 		log.Println("create file: ", err)

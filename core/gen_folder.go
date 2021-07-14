@@ -8,7 +8,8 @@ import (
 )
 
 func generateFolder(filePath string) {
-	filePaths := []string{filePath + "model", filePath + "service", filePath + "service/impl", filePath + "mapper", filePath + "xml"}
+	filePaths := []string{filePath + "model", filePath + "service", filePath + "service/impl",
+		filePath + "mapper", filePath + "xml", filePath + "test", filePath + "controller"}
 	for _, folderPath := range filePaths {
 		exist, err := utils.PathExists(folderPath)
 		if err != nil {

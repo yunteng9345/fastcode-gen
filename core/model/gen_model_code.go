@@ -9,7 +9,7 @@ import (
 )
 
 func GenModelCode(table db.Table) {
-	tmpl, err := template.ParseFiles("./template/Model.java")
+	tmpl, err := template.ParseFiles("./template/XXXModel.java")
 	if err != nil {
 		fmt.Println("Error happened..")
 	}

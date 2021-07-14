@@ -5,7 +5,7 @@ import (
 )
 
 func TestGenServiceCode(t *testing.T) {
-	//tmpl, err := template.ParseFiles("./template/IService.java")
+	//tmpl, err := template.ParseFiles("./template/XXXIService.java")
 	//if err != nil {
 	//	fmt.Println("Error happened..")
 	//}

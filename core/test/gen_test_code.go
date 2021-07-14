@@ -1,4 +1,4 @@
-package controller
+package test
 
 import (
 	"fastcode-gen/db"
@@ -8,12 +8,12 @@ import (
 	"text/template"
 )
 
-func GenServiceCode(table db.Table) {
-	tmpl, err := template.ParseFiles("./template/XXXController.java")
+func GenTestCode(table db.Table) {
+	tmpl, err := template.ParseFiles("./template/XXXServiceTest.java")
 	if err != nil {
 		fmt.Println("Error happened..")
 	}
-	out, err := os.Create("./out/controller/" + table.Name + "XXXController.java")
+	out, err := os.Create("./out/test/" + table.Name + "ServiceTest.java")
 	defer out.Close()
 	if err != nil {
 		log.Println("create file: ", err)

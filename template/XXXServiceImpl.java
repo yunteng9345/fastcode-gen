@@ -1,8 +1,7 @@
 package ${packageName}.db.service;
 
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
-import ${packageName}.db.mapper.{{ .Name }}Mapper;
-import ${packageName}.db.model.{{ .Name }};
+
 import lombok.extern.slf4j.Slf4j;
 import com.jlpay.utils.page.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,30 +16,40 @@ import java.util.List;
  */
 @Slf4j
 @Service
-public class I{{ .Name }}Service {
+public class {{ .Name }}ServiceImpl implements I{{ .Name }}Service {
 
-	@Autowired
+	@Resource
     private {{ .Name }}Mapper mapper;
 
-	public {{ .Name }} get{{ .Name }}(String id) {
-		return mapper.getById(id);
-	}
-	
-	public void save({{ .Name }} {{ .LowName }}){
+	@Override
+	public int save({{ .Name }} {{ .LowName }}){
 		{{ .LowName }}.setCreateTime(new Date());
 		{{ .LowName }}.setUpdateTime(new Date());
-		mapper.insert({{ .LowName }});
+		return mapper.insert({{ .LowName }});
 	}
 
-	public void updateNotNull({{ .Name }} {{ .LowName }}) {
-		mapper.updateNotNull({{ .LowName }});
+	@Override
+	public {{ .Name }} get(String id) {
+		return mapper.getById(id);
 	}
 
+    @Override
+    public int update({{ .Name }} {{ .LowName }}) {
+         mapper.update(termConfig);
+    }
+
+	@Override
+	public int updateNotNull({{ .Name }} {{ .LowName }}) {
+		return mapper.updateNotNull({{ .LowName }});
+	}
+
+	@Override
 	public List<{{ .Name }}> list{{ .Name }}({{ .Name }} queryParam) {
 		return mapper.list{{ .Name }}(queryParam);
 	}
 	
-	public void list{{ .Name }}ByPage({{ .Name }} queryParam, Pagination pagination) {
+	@Override
+	public int list{{ .Name }}ByPage({{ .Name }} queryParam, Pagination pagination) {
 		List<{{ .Name }}> list = mapper.list{{ .Name }}ByPage(queryParam, pagination.getPageBounds());
 		pagination.setRows(list);
 		try {

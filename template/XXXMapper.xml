@@ -52,15 +52,27 @@
 		{{end}} {{end}}
 	</update>
 
-	<select id="list{{ .Name}}Temp" resultType="com.jlpay.manage.sim.db.model.{{ .Name}}">
+	<select id="list{{ .Name}}" resultType="com.jlpay.manage.sim.db.model.{{ .Name}}">
 		SELECT
 		{{range $i, $el := .TableStruct}}{{if $i}},{{end}} {{$el.OriColumn}} AS {{$el.Column}}  {{end}}
 		FROM {{ .TableName}}
-		<WHERE>
+		<where>
 			{{range $i, $el := .TableStruct}}{{if gt $i 0}}<if test="{{$el.Column}} != null ">
 					{{$el.OriColumn}} = #{ {{$el.Column}},jdbcType=VARCHAR},
 				</if>
 			{{end}} {{end}}
-		</WHERE>
+		</where>
 	</select>
+
+	<select id="list{{ .Name}}ByPage" resultType="com.jlpay.manage.sim.db.model.{{ .Name}}">
+		SELECT
+		<include refid="Base_Column_List"/>
+		<where>
+			{{range $i, $el := .TableStruct}}{{if gt $i 0}}<if test="{{$el.Column}} != null ">
+			{{$el.OriColumn}} = #{ {{$el.Column}},jdbcType=VARCHAR},
+		</if>
+			{{end}} {{end}}
+		</where>
+	</select>
+
 </mapper>
