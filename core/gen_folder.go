@@ -3,7 +3,6 @@ package main
 import (
 	"fastcode-gen/db"
 	"fastcode-gen/utils"
-	"fmt"
 	"log"
 	"os"
 )
@@ -21,9 +20,9 @@ func generateFolder(filePath string) {
 				// 文件夹名称，权限
 				err := os.Mkdir(folderPath, os.ModePerm)
 				if err != nil {
-					fmt.Println(folderPath+"文件夹创建失败：", err)
+					log.Println(folderPath+"文件夹创建失败：", err)
 				} else {
-					fmt.Println(folderPath + "文件夹创建成功！")
+					log.Println(folderPath + "文件夹创建成功！")
 				}
 			}
 		}

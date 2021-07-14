@@ -3,6 +3,7 @@ package utils
 import (
 	"os"
 	"strings"
+	"unicode"
 )
 
 // get split table name
@@ -27,4 +28,42 @@ func PathExists(path string) (bool, error) {
 		return false, nil
 	}
 	return false, err
+}
+
+// 下划线写法转为驼峰写法
+func Case2Camel(name string) string {
+	// lower all case
+	name = strings.ToLower(name)
+	// rm "T_"
+	name = strings.ReplaceAll(name, "T_", " ")
+	name = strings.Replace(name, "_", " ", -1)
+
+	name = strings.Title(name)
+	return strings.Replace(name, " ", "", -1)
+}
+
+// 首字母大写
+func UpperFirst(str string) string {
+	for i, v := range str {
+		return string(unicode.ToUpper(v)) + str[i+1:]
+	}
+	return ""
+}
+
+// 首字母小写
+func LowerFirst(str string) string {
+	for i, v := range str {
+		return string(unicode.ToLower(v)) + str[i+1:]
+	}
+	return ""
+}
+
+func GetType(tp string) string {
+	if strings.Contains(tp, "DATE") {
+		return "Date"
+	} else if strings.Contains(tp, "NUMBER") {
+		return "BigDecimal"
+	} else {
+		return "String"
+	}
 }
