@@ -7,6 +7,7 @@ type Table struct {
 	TableName string
 	// SimCardDevicePkg
 	Name string
+	Time string
 	// simCardDevicePkg
 	LowName     string
 	TableStruct []TableStruct

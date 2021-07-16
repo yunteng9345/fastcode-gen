@@ -1,4 +1,4 @@
-package com.jlpay.manage.sim.db.service;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -21,16 +21,16 @@ public class {{ .Name }}ServiceTest {
     @Test
     public void saveTest() {
         {{ .Name }} {{ .LowName }} = new {{ .Name }}();
-        {{range $i, $el := .TableStruct}} {{$el.LowName}}.set{{$el.FirstUpperName}}("{{$el.FirstUpperName}}");
-        {{end}}
+       {{range $i, $el := .TableStruct}} {{$el.LowName}}.set{{$el.FirstUpperName}}("{{$el.FirstUpperName}}");
+       {{end}}
         Assert.assertEquals(1, i{{ .Name }}Service.update({{ .LowName }}));
     }
 
     @Test
     public void updateTest(){
         {{ .Name }} {{ .LowName }} = new {{ .Name }}();
-      	{{range $i, $el := .TableStruct}} {{$el.LowName}}.set{{$el.FirstUpperName}}("{{$el.FirstUpperName}}");
-        {{end}}
+       {{range $i, $el := .TableStruct}} {{$el.LowName}}.set{{$el.FirstUpperName}}("{{$el.FirstUpperName}}");
+       {{end}}
         Assert.assertEquals(1, i{{ .Name }}Service.update({{ .LowName }}));
     }
 

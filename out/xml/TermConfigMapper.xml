@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jlpay.manage.sim.db.mapper.TermConfigMapper">
+	<resultMap id="BaseResultMap" type="com.jlpay.manage.sim.db.model.TermConfig">
+		<!--@mbg.generated-->
+		 <id column="TERM_NO" jdbcType="VARCHAR" property="termNo"/>
+		 <result column="KEY" jdbcType="VARCHAR" property="key"/>
+		 <result column="VALUE" jdbcType="VARCHAR" property="value"/>
+		 <result column="CREAT_TIME" jdbcType="VARCHAR" property="creatTime"/>
+		 <result column="UPDATE_TIME" jdbcType="VARCHAR" property="updateTime"/>
+		 <result column="CREAT_USER" jdbcType="VARCHAR" property="creatUser"/>
+		 <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser"/>
+		 <result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+		
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		<!--@mbg.generated-->
+		TERM_NO ,KEY ,VALUE ,CREAT_TIME ,UPDATE_TIME ,CREAT_USER ,UPDATE_USER ,REMARK 
+	</sql>
+
+	<select id="getById" parameterType="java.lang.String" resultMap="BaseResultMap">
+		<!--@mbg.generated-->
+		select
+			<include refid="Base_Column_List"/>
+		from T_TERM_CONFIG
+		 where TERM_NO = #{ termNo,jdbcType=VARCHAR}
+		
+	</select>
+
+	<insert id="insert" parameterType="com.jlpay.manage.sim.db.model.TermConfig">
+		<!--@mbg.generated-->
+		insert into T_TERM_CONFIG( TERM_NO ,KEY ,VALUE ,CREAT_TIME ,UPDATE_TIME ,CREAT_USER ,UPDATE_USER ,REMARK )
+		values(
+		 #{ termNo, jdbcType=VARCHAR}  , #{ key, jdbcType=VARCHAR}  , #{ value, jdbcType=VARCHAR}  , #{ creatTime, jdbcType=VARCHAR}  , #{ updateTime, jdbcType=VARCHAR}  , #{ creatUser, jdbcType=VARCHAR}  , #{ updateUser, jdbcType=VARCHAR}  , #{ remark, jdbcType=VARCHAR}  )
+	</insert>
+
+	<update id="updateNotNull" parameterType="com.jlpay.manage.sim.db.model.TermConfig">
+		<!--@mbg.generated-->
+		update T_TERM_CONFIG
+		<set>
+			 <if test="key != null ">
+			    KEY = #{ key,jdbcType=VARCHAR},
+			</if>
+			 <if test="value != null ">
+			    VALUE = #{ value,jdbcType=VARCHAR},
+			</if>
+			 <if test="creatTime != null ">
+			    CREAT_TIME = #{ creatTime,jdbcType=VARCHAR},
+			</if>
+			 <if test="updateTime != null ">
+			    UPDATE_TIME = #{ updateTime,jdbcType=VARCHAR},
+			</if>
+			 <if test="creatUser != null ">
+			    CREAT_USER = #{ creatUser,jdbcType=VARCHAR},
+			</if>
+			 <if test="updateUser != null ">
+			    UPDATE_USER = #{ updateUser,jdbcType=VARCHAR},
+			</if>
+			 <if test="remark != null ">
+			    REMARK = #{ remark,jdbcType=VARCHAR},
+			</if>
+			 
+		</set>  
+		where TERM_NO = #{ termNo,jdbcType=VARCHAR}
+		               
+	</update>
+
+	<update id="update" parameterType="com.jlpay.manage.sim.db.model.TermConfig">
+		<!--@mbg.generated-->
+		update T_TERM_CONFIG
+		<set> 
+			TERM_NO = #{ termNo,jdbcType=VARCHAR},
+			KEY = #{ key,jdbcType=VARCHAR},
+			VALUE = #{ value,jdbcType=VARCHAR},
+			CREAT_TIME = #{ creatTime,jdbcType=VARCHAR},
+			UPDATE_TIME = #{ updateTime,jdbcType=VARCHAR},
+			CREAT_USER = #{ creatUser,jdbcType=VARCHAR},
+			UPDATE_USER = #{ updateUser,jdbcType=VARCHAR},
+			REMARK = #{ remark,jdbcType=VARCHAR}
+		</set>  
+		where TERM_NO = #{ termNo,jdbcType=VARCHAR}
+		               
+	</update>
+
+	<select id="listTermConfig" resultType="com.jlpay.manage.sim.db.model.TermConfig">
+		SELECT
+		 TERM_NO AS termNo  , KEY AS key  , VALUE AS value  , CREAT_TIME AS creatTime  , UPDATE_TIME AS updateTime  , CREAT_USER AS creatUser  , UPDATE_USER AS updateUser  , REMARK AS remark  
+		FROM T_TERM_CONFIG
+		<where>
+			 <if test="key != null ">
+					KEY = #{ key,jdbcType=VARCHAR},
+				</if>
+			 <if test="value != null ">
+					VALUE = #{ value,jdbcType=VARCHAR},
+				</if>
+			 <if test="creatTime != null ">
+					CREAT_TIME = #{ creatTime,jdbcType=VARCHAR},
+				</if>
+			 <if test="updateTime != null ">
+					UPDATE_TIME = #{ updateTime,jdbcType=VARCHAR},
+				</if>
+			 <if test="creatUser != null ">
+					CREAT_USER = #{ creatUser,jdbcType=VARCHAR},
+				</if>
+			 <if test="updateUser != null ">
+					UPDATE_USER = #{ updateUser,jdbcType=VARCHAR},
+				</if>
+			 <if test="remark != null ">
+					REMARK = #{ remark,jdbcType=VARCHAR},
+				</if>
+			 
+		</where>
+	</select>
+
+	<select id="listTermConfigByPage" resultType="com.jlpay.manage.sim.db.model.TermConfig">
+		SELECT
+		<include refid="Base_Column_List"/>
+		<where>
+			 <if test="key != null ">
+			KEY = #{ key,jdbcType=VARCHAR},
+		</if>
+			 <if test="value != null ">
+			VALUE = #{ value,jdbcType=VARCHAR},
+		</if>
+			 <if test="creatTime != null ">
+			CREAT_TIME = #{ creatTime,jdbcType=VARCHAR},
+		</if>
+			 <if test="updateTime != null ">
+			UPDATE_TIME = #{ updateTime,jdbcType=VARCHAR},
+		</if>
+			 <if test="creatUser != null ">
+			CREAT_USER = #{ creatUser,jdbcType=VARCHAR},
+		</if>
+			 <if test="updateUser != null ">
+			UPDATE_USER = #{ updateUser,jdbcType=VARCHAR},
+		</if>
+			 <if test="remark != null ">
+			REMARK = #{ remark,jdbcType=VARCHAR},
+		</if>
+			 
+		</where>
+	</select>
+
+</mapper>

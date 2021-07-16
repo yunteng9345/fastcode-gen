@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * @Author：{{.Author}}
- * @CreateTime：${createTime}
+ * @CreateTime：{{ .Time }}
  * @Description: ${remark}
 */
 @Mapper

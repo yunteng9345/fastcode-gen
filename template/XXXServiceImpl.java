@@ -1,9 +1,5 @@
-package ${packageName}.db.service;
-
-import com.github.miemiedev.mybatis.paginator.domain.PageList;
 
 import lombok.extern.slf4j.Slf4j;
-import com.jlpay.utils.page.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 /**
  * @Author：{{ .Author}}
- * @CreateTime：${createTime}
+ * @CreateTime：{{ .Time }}
  * @Description: ${remark}
  */
 @Slf4j

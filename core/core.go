@@ -9,6 +9,7 @@ import (
 	"fastcode-gen/utils"
 	"log"
 	"strings"
+	"time"
 
 	conf "fastcode-gen/config"
 	"fastcode-gen/db"
@@ -59,6 +60,7 @@ func GetTable() []db.Table {
 			tableStruct.FirstUpperName = strings.ReplaceAll(tableStruct.Column, "_", "")
 			tableStruct.Column = utils.LowerFirst(strings.ReplaceAll(tableStruct.Column, "_", ""))
 			tableStruct.Type = utils.GetType(tableStruct.Type)
+			table.Time = time.Now().Format("2006-01-02 15:04:05")
 			tableStructs = append(tableStructs, tableStruct)
 		}
 		table.TableStruct = append(table.TableStruct, tableStructs...)

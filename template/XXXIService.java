@@ -1,7 +1,8 @@
-package com.jlpay.service;
 
-/**
- ** @auther {{.Author}}
+ /**
+  * @Author：{{.Author}}
+  * @CreateTime：{{ .Time }}
+  * @Description: ${remark}
  */
 public interface I{{ .Name }}Service {
 	

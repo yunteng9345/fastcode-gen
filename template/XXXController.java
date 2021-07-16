@@ -1,4 +1,3 @@
-package com.jiwu.tradingcloud.controller.${zujian};
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jiwu.tradingcloud.controller.BaseController;
-import com.jiwu.tradingcloud.model.${zujian}.${Table};
- 
+
 import com.jiwu.tradingcloud.net.http.tradingcloud.${zujian}.${table}Service;
 import com.jiwu.tradingcloud.Pagination;
 import com.jiwu.tradingcloud.model.LoginUserEntity;
@@ -19,12 +17,11 @@ import com.jiwu.tradingcloud.model.order.vo.QueryVo;
 import com.jiwu.tradingcloud.model.settle.${Table};
 import com.jiwu.tradingcloud.service.settle.Motan${Table}Service;
   
-/**
-* Copyright © 嘉联有限公司<br>
-* Author：{author}
-* CreateTime：2016年07月22 11:52:28
-* Description: ${annotation}配置表
-*/
+ /**
+  * @Author：{{.Author}}
+  * @CreateTime：{{ .Time }}
+  * @Description: ${remark}
+ */
 @Controller
 @RequestMapping("/${zujian}/${table}/")
 public class  ${Table}Controller extends BaseController {
