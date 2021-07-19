@@ -22,16 +22,8 @@ func TestCase2Camel(t *testing.T) {
 	require.Equal("SimCardDevicePkg", name)
 }
 
-func TestFirstCast2Lower(t *testing.T) {
+func TestUpperToCamel(t *testing.T) {
 	require := require.New(t)
-	str := "IccId"
-	var upperStr string
-	vv := []rune(str) // 后文有介绍
-	for i := 0; i < len(vv); i++ {
-		if i == 0 {
-			vv[i] -= 32 // string的码表相差32位
-		}
-		upperStr += string(vv[i])
-	}
-	require.Equal("iccId", upperStr)
+	str := "TERM_NO"
+	require.Equal("Term_No", UpperToCamel(str))
 }

@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jlpay.manage.sim.db.mapper.AlarmInfoMapper">
+	<resultMap id="BaseResultMap" type="com.jlpay.manage.sim.db.model.AlarmInfo">
+		<!--@mbg.generated-->
+		 <id column="ID" jdbcType="VARCHAR" property="id"/>
+		 <result column="MERCHANT_NO" jdbcType="VARCHAR" property="merchantNo"/>
+		 <result column="TERMINAL_NO" jdbcType="VARCHAR" property="terminalNo"/>
+		 <result column="RISK_RANK" jdbcType="VARCHAR" property="riskRank"/>
+		 <result column="BANK_RISK_RANK" jdbcType="VARCHAR" property="bankRiskRank"/>
+		 <result column="ALARM_TIME" jdbcType="VARCHAR" property="alarmTime"/>
+		 <result column="ALARM_TYPE" jdbcType="VARCHAR" property="alarmType"/>
+		 <result column="ALARM_SOURCE" jdbcType="VARCHAR" property="alarmSource"/>
+		 <result column="ALARMRULECODE" jdbcType="VARCHAR" property="alarmrulecode"/>
+		 <result column="BANKRULECODE" jdbcType="VARCHAR" property="bankrulecode"/>
+		 <result column="SYSRULECODE" jdbcType="VARCHAR" property="sysrulecode"/>
+		 <result column="CHECK_STATUS" jdbcType="VARCHAR" property="checkStatus"/>
+		 <result column="CHECK_RECORD" jdbcType="VARCHAR" property="checkRecord"/>
+		 <result column="CHECK_TIME" jdbcType="VARCHAR" property="checkTime"/>
+		 <result column="CHECK_TEL" jdbcType="VARCHAR" property="checkTel"/>
+		 <result column="CHECK_USER" jdbcType="VARCHAR" property="checkUser"/>
+		 <result column="IS_CASE" jdbcType="VARCHAR" property="isCase"/>
+		 <result column="RECHECK_RECORD" jdbcType="VARCHAR" property="recheckRecord"/>
+		 <result column="RISK_CTRL" jdbcType="VARCHAR" property="riskCtrl"/>
+		 <result column="RECHECK_TIME" jdbcType="VARCHAR" property="recheckTime"/>
+		 <result column="RECHECK_TEL" jdbcType="VARCHAR" property="recheckTel"/>
+		 <result column="RECHECK_USER" jdbcType="VARCHAR" property="recheckUser"/>
+		 <result column="CREATE_TIME" jdbcType="VARCHAR" property="createTime"/>
+		 <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser"/>
+		 <result column="PROCESS_DATE" jdbcType="VARCHAR" property="processDate"/>
+		 <result column="CHAN_MERCH_NO" jdbcType="VARCHAR" property="chanMerchNo"/>
+		 <result column="CHAN_TERM_NO" jdbcType="VARCHAR" property="chanTermNo"/>
+		 <result column="SYSRULEDESC" jdbcType="VARCHAR" property="sysruledesc"/>
+		 <result column="AREA_CODE" jdbcType="VARCHAR" property="areaCode"/>
+		 <result column="TRANS_AREA_CODE" jdbcType="VARCHAR" property="transAreaCode"/>
+		
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		<!--@mbg.generated-->
+		ID ,MERCHANT_NO ,TERMINAL_NO ,RISK_RANK ,BANK_RISK_RANK ,ALARM_TIME ,ALARM_TYPE ,ALARM_SOURCE ,ALARMRULECODE ,BANKRULECODE ,SYSRULECODE ,CHECK_STATUS ,CHECK_RECORD ,CHECK_TIME ,CHECK_TEL ,CHECK_USER ,IS_CASE ,RECHECK_RECORD ,RISK_CTRL ,RECHECK_TIME ,RECHECK_TEL ,RECHECK_USER ,CREATE_TIME ,CREATE_USER ,PROCESS_DATE ,CHAN_MERCH_NO ,CHAN_TERM_NO ,SYSRULEDESC ,AREA_CODE ,TRANS_AREA_CODE 
+	</sql>
+
+	<select id="getById" parameterType="java.lang.String" resultMap="BaseResultMap">
+		<!--@mbg.generated-->
+		select
+			<include refid="Base_Column_List"/>
+		from t_alarm_info
+		 where ID = #{ id,jdbcType=VARCHAR}
+		
+	</select>
+
+	<insert id="insert" parameterType="com.jlpay.manage.sim.db.model.AlarmInfo">
+		<!--@mbg.generated-->
+		insert into t_alarm_info( ID ,MERCHANT_NO ,TERMINAL_NO ,RISK_RANK ,BANK_RISK_RANK ,ALARM_TIME ,ALARM_TYPE ,ALARM_SOURCE ,ALARMRULECODE ,BANKRULECODE ,SYSRULECODE ,CHECK_STATUS ,CHECK_RECORD ,CHECK_TIME ,CHECK_TEL ,CHECK_USER ,IS_CASE ,RECHECK_RECORD ,RISK_CTRL ,RECHECK_TIME ,RECHECK_TEL ,RECHECK_USER ,CREATE_TIME ,CREATE_USER ,PROCESS_DATE ,CHAN_MERCH_NO ,CHAN_TERM_NO ,SYSRULEDESC ,AREA_CODE ,TRANS_AREA_CODE )
+		values(
+		 #{ id, jdbcType=VARCHAR}  , #{ merchantNo, jdbcType=VARCHAR}  , #{ terminalNo, jdbcType=VARCHAR}  , #{ riskRank, jdbcType=VARCHAR}  , #{ bankRiskRank, jdbcType=VARCHAR}  , #{ alarmTime, jdbcType=VARCHAR}  , #{ alarmType, jdbcType=VARCHAR}  , #{ alarmSource, jdbcType=VARCHAR}  , #{ alarmrulecode, jdbcType=VARCHAR}  , #{ bankrulecode, jdbcType=VARCHAR}  , #{ sysrulecode, jdbcType=VARCHAR}  , #{ checkStatus, jdbcType=VARCHAR}  , #{ checkRecord, jdbcType=VARCHAR}  , #{ checkTime, jdbcType=VARCHAR}  , #{ checkTel, jdbcType=VARCHAR}  , #{ checkUser, jdbcType=VARCHAR}  , #{ isCase, jdbcType=VARCHAR}  , #{ recheckRecord, jdbcType=VARCHAR}  , #{ riskCtrl, jdbcType=VARCHAR}  , #{ recheckTime, jdbcType=VARCHAR}  , #{ recheckTel, jdbcType=VARCHAR}  , #{ recheckUser, jdbcType=VARCHAR}  , #{ createTime, jdbcType=VARCHAR}  , #{ createUser, jdbcType=VARCHAR}  , #{ processDate, jdbcType=VARCHAR}  , #{ chanMerchNo, jdbcType=VARCHAR}  , #{ chanTermNo, jdbcType=VARCHAR}  , #{ sysruledesc, jdbcType=VARCHAR}  , #{ areaCode, jdbcType=VARCHAR}  , #{ transAreaCode, jdbcType=VARCHAR}  )
+	</insert>
+
+	<update id="updateNotNull" parameterType="com.jlpay.manage.sim.db.model.AlarmInfo">
+		<!--@mbg.generated-->
+		update t_alarm_info
+		<set>
+			 <if test="merchantNo != null ">
+			    MERCHANT_NO = #{ merchantNo,jdbcType=VARCHAR},
+			</if>
+			 <if test="terminalNo != null ">
+			    TERMINAL_NO = #{ terminalNo,jdbcType=VARCHAR},
+			</if>
+			 <if test="riskRank != null ">
+			    RISK_RANK = #{ riskRank,jdbcType=VARCHAR},
+			</if>
+			 <if test="bankRiskRank != null ">
+			    BANK_RISK_RANK = #{ bankRiskRank,jdbcType=VARCHAR},
+			</if>
+			 <if test="alarmTime != null ">
+			    ALARM_TIME = #{ alarmTime,jdbcType=VARCHAR},
+			</if>
+			 <if test="alarmType != null ">
+			    ALARM_TYPE = #{ alarmType,jdbcType=VARCHAR},
+			</if>
+			 <if test="alarmSource != null ">
+			    ALARM_SOURCE = #{ alarmSource,jdbcType=VARCHAR},
+			</if>
+			 <if test="alarmrulecode != null ">
+			    ALARMRULECODE = #{ alarmrulecode,jdbcType=VARCHAR},
+			</if>
+			 <if test="bankrulecode != null ">
+			    BANKRULECODE = #{ bankrulecode,jdbcType=VARCHAR},
+			</if>
+			 <if test="sysrulecode != null ">
+			    SYSRULECODE = #{ sysrulecode,jdbcType=VARCHAR},
+			</if>
+			 <if test="checkStatus != null ">
+			    CHECK_STATUS = #{ checkStatus,jdbcType=VARCHAR},
+			</if>
+			 <if test="checkRecord != null ">
+			    CHECK_RECORD = #{ checkRecord,jdbcType=VARCHAR},
+			</if>
+			 <if test="checkTime != null ">
+			    CHECK_TIME = #{ checkTime,jdbcType=VARCHAR},
+			</if>
+			 <if test="checkTel != null ">
+			    CHECK_TEL = #{ checkTel,jdbcType=VARCHAR},
+			</if>
+			 <if test="checkUser != null ">
+			    CHECK_USER = #{ checkUser,jdbcType=VARCHAR},
+			</if>
+			 <if test="isCase != null ">
+			    IS_CASE = #{ isCase,jdbcType=VARCHAR},
+			</if>
+			 <if test="recheckRecord != null ">
+			    RECHECK_RECORD = #{ recheckRecord,jdbcType=VARCHAR},
+			</if>
+			 <if test="riskCtrl != null ">
+			    RISK_CTRL = #{ riskCtrl,jdbcType=VARCHAR},
+			</if>
+			 <if test="recheckTime != null ">
+			    RECHECK_TIME = #{ recheckTime,jdbcType=VARCHAR},
+			</if>
+			 <if test="recheckTel != null ">
+			    RECHECK_TEL = #{ recheckTel,jdbcType=VARCHAR},
+			</if>
+			 <if test="recheckUser != null ">
+			    RECHECK_USER = #{ recheckUser,jdbcType=VARCHAR},
+			</if>
+			 <if test="createTime != null ">
+			    CREATE_TIME = #{ createTime,jdbcType=VARCHAR},
+			</if>
+			 <if test="createUser != null ">
+			    CREATE_USER = #{ createUser,jdbcType=VARCHAR},
+			</if>
+			 <if test="processDate != null ">
+			    PROCESS_DATE = #{ processDate,jdbcType=VARCHAR},
+			</if>
+			 <if test="chanMerchNo != null ">
+			    CHAN_MERCH_NO = #{ chanMerchNo,jdbcType=VARCHAR},
+			</if>
+			 <if test="chanTermNo != null ">
+			    CHAN_TERM_NO = #{ chanTermNo,jdbcType=VARCHAR},
+			</if>
+			 <if test="sysruledesc != null ">
+			    SYSRULEDESC = #{ sysruledesc,jdbcType=VARCHAR},
+			</if>
+			 <if test="areaCode != null ">
+			    AREA_CODE = #{ areaCode,jdbcType=VARCHAR},
+			</if>
+			 <if test="transAreaCode != null ">
+			    TRANS_AREA_CODE = #{ transAreaCode,jdbcType=VARCHAR},
+			</if>
+			 
+		</set>  
+		where ID = #{ id,jdbcType=VARCHAR}
+		                                                           
+	</update>
+
+	<update id="update" parameterType="com.jlpay.manage.sim.db.model.AlarmInfo">
+		<!--@mbg.generated-->
+		update t_alarm_info
+		<set> 
+			ID = #{ id,jdbcType=VARCHAR},
+			MERCHANT_NO = #{ merchantNo,jdbcType=VARCHAR},
+			TERMINAL_NO = #{ terminalNo,jdbcType=VARCHAR},
+			RISK_RANK = #{ riskRank,jdbcType=VARCHAR},
+			BANK_RISK_RANK = #{ bankRiskRank,jdbcType=VARCHAR},
+			ALARM_TIME = #{ alarmTime,jdbcType=VARCHAR},
+			ALARM_TYPE = #{ alarmType,jdbcType=VARCHAR},
+			ALARM_SOURCE = #{ alarmSource,jdbcType=VARCHAR},
+			ALARMRULECODE = #{ alarmrulecode,jdbcType=VARCHAR},
+			BANKRULECODE = #{ bankrulecode,jdbcType=VARCHAR},
+			SYSRULECODE = #{ sysrulecode,jdbcType=VARCHAR},
+			CHECK_STATUS = #{ checkStatus,jdbcType=VARCHAR},
+			CHECK_RECORD = #{ checkRecord,jdbcType=VARCHAR},
+			CHECK_TIME = #{ checkTime,jdbcType=VARCHAR},
+			CHECK_TEL = #{ checkTel,jdbcType=VARCHAR},
+			CHECK_USER = #{ checkUser,jdbcType=VARCHAR},
+			IS_CASE = #{ isCase,jdbcType=VARCHAR},
+			RECHECK_RECORD = #{ recheckRecord,jdbcType=VARCHAR},
+			RISK_CTRL = #{ riskCtrl,jdbcType=VARCHAR},
+			RECHECK_TIME = #{ recheckTime,jdbcType=VARCHAR},
+			RECHECK_TEL = #{ recheckTel,jdbcType=VARCHAR},
+			RECHECK_USER = #{ recheckUser,jdbcType=VARCHAR},
+			CREATE_TIME = #{ createTime,jdbcType=VARCHAR},
+			CREATE_USER = #{ createUser,jdbcType=VARCHAR},
+			PROCESS_DATE = #{ processDate,jdbcType=VARCHAR},
+			CHAN_MERCH_NO = #{ chanMerchNo,jdbcType=VARCHAR},
+			CHAN_TERM_NO = #{ chanTermNo,jdbcType=VARCHAR},
+			SYSRULEDESC = #{ sysruledesc,jdbcType=VARCHAR},
+			AREA_CODE = #{ areaCode,jdbcType=VARCHAR},
+			TRANS_AREA_CODE = #{ transAreaCode,jdbcType=VARCHAR}
+		</set>  
+		where ID = #{ id,jdbcType=VARCHAR}
+		                                                           
+	</update>
+
+	<select id="listAlarmInfo" resultType="com.jlpay.manage.sim.db.model.AlarmInfo">
+		SELECT
+		 ID AS id  , MERCHANT_NO AS merchantNo  , TERMINAL_NO AS terminalNo  , RISK_RANK AS riskRank  , BANK_RISK_RANK AS bankRiskRank  , ALARM_TIME AS alarmTime  , ALARM_TYPE AS alarmType  , ALARM_SOURCE AS alarmSource  , ALARMRULECODE AS alarmrulecode  , BANKRULECODE AS bankrulecode  , SYSRULECODE AS sysrulecode  , CHECK_STATUS AS checkStatus  , CHECK_RECORD AS checkRecord  , CHECK_TIME AS checkTime  , CHECK_TEL AS checkTel  , CHECK_USER AS checkUser  , IS_CASE AS isCase  , RECHECK_RECORD AS recheckRecord  , RISK_CTRL AS riskCtrl  , RECHECK_TIME AS recheckTime  , RECHECK_TEL AS recheckTel  , RECHECK_USER AS recheckUser  , CREATE_TIME AS createTime  , CREATE_USER AS createUser  , PROCESS_DATE AS processDate  , CHAN_MERCH_NO AS chanMerchNo  , CHAN_TERM_NO AS chanTermNo  , SYSRULEDESC AS sysruledesc  , AREA_CODE AS areaCode  , TRANS_AREA_CODE AS transAreaCode  
+		FROM t_alarm_info
+		<where>
+			 <if test="merchantNo != null ">
+					MERCHANT_NO = #{ merchantNo,jdbcType=VARCHAR},
+				</if>
+			 <if test="terminalNo != null ">
+					TERMINAL_NO = #{ terminalNo,jdbcType=VARCHAR},
+				</if>
+			 <if test="riskRank != null ">
+					RISK_RANK = #{ riskRank,jdbcType=VARCHAR},
+				</if>
+			 <if test="bankRiskRank != null ">
+					BANK_RISK_RANK = #{ bankRiskRank,jdbcType=VARCHAR},
+				</if>
+			 <if test="alarmTime != null ">
+					ALARM_TIME = #{ alarmTime,jdbcType=VARCHAR},
+				</if>
+			 <if test="alarmType != null ">
+					ALARM_TYPE = #{ alarmType,jdbcType=VARCHAR},
+				</if>
+			 <if test="alarmSource != null ">
+					ALARM_SOURCE = #{ alarmSource,jdbcType=VARCHAR},
+				</if>
+			 <if test="alarmrulecode != null ">
+					ALARMRULECODE = #{ alarmrulecode,jdbcType=VARCHAR},
+				</if>
+			 <if test="bankrulecode != null ">
+					BANKRULECODE = #{ bankrulecode,jdbcType=VARCHAR},
+				</if>
+			 <if test="sysrulecode != null ">
+					SYSRULECODE = #{ sysrulecode,jdbcType=VARCHAR},
+				</if>
+			 <if test="checkStatus != null ">
+					CHECK_STATUS = #{ checkStatus,jdbcType=VARCHAR},
+				</if>
+			 <if test="checkRecord != null ">
+					CHECK_RECORD = #{ checkRecord,jdbcType=VARCHAR},
+				</if>
+			 <if test="checkTime != null ">
+					CHECK_TIME = #{ checkTime,jdbcType=VARCHAR},
+				</if>
+			 <if test="checkTel != null ">
+					CHECK_TEL = #{ checkTel,jdbcType=VARCHAR},
+				</if>
+			 <if test="checkUser != null ">
+					CHECK_USER = #{ checkUser,jdbcType=VARCHAR},
+				</if>
+			 <if test="isCase != null ">
+					IS_CASE = #{ isCase,jdbcType=VARCHAR},
+				</if>
+			 <if test="recheckRecord != null ">
+					RECHECK_RECORD = #{ recheckRecord,jdbcType=VARCHAR},
+				</if>
+			 <if test="riskCtrl != null ">
+					RISK_CTRL = #{ riskCtrl,jdbcType=VARCHAR},
+				</if>
+			 <if test="recheckTime != null ">
+					RECHECK_TIME = #{ recheckTime,jdbcType=VARCHAR},
+				</if>
+			 <if test="recheckTel != null ">
+					RECHECK_TEL = #{ recheckTel,jdbcType=VARCHAR},
+				</if>
+			 <if test="recheckUser != null ">
+					RECHECK_USER = #{ recheckUser,jdbcType=VARCHAR},
+				</if>
+			 <if test="createTime != null ">
+					CREATE_TIME = #{ createTime,jdbcType=VARCHAR},
+				</if>
+			 <if test="createUser != null ">
+					CREATE_USER = #{ createUser,jdbcType=VARCHAR},
+				</if>
+			 <if test="processDate != null ">
+					PROCESS_DATE = #{ processDate,jdbcType=VARCHAR},
+				</if>
+			 <if test="chanMerchNo != null ">
+					CHAN_MERCH_NO = #{ chanMerchNo,jdbcType=VARCHAR},
+				</if>
+			 <if test="chanTermNo != null ">
+					CHAN_TERM_NO = #{ chanTermNo,jdbcType=VARCHAR},
+				</if>
+			 <if test="sysruledesc != null ">
+					SYSRULEDESC = #{ sysruledesc,jdbcType=VARCHAR},
+				</if>
+			 <if test="areaCode != null ">
+					AREA_CODE = #{ areaCode,jdbcType=VARCHAR},
+				</if>
+			 <if test="transAreaCode != null ">
+					TRANS_AREA_CODE = #{ transAreaCode,jdbcType=VARCHAR},
+				</if>
+			 
+		</where>
+	</select>
+
+	<select id="listAlarmInfoByPage" resultType="com.jlpay.manage.sim.db.model.AlarmInfo">
+		SELECT
+		<include refid="Base_Column_List"/>
+		<where>
+			 <if test="merchantNo != null ">
+			MERCHANT_NO = #{ merchantNo,jdbcType=VARCHAR},
+		</if>
+			 <if test="terminalNo != null ">
+			TERMINAL_NO = #{ terminalNo,jdbcType=VARCHAR},
+		</if>
+			 <if test="riskRank != null ">
+			RISK_RANK = #{ riskRank,jdbcType=VARCHAR},
+		</if>
+			 <if test="bankRiskRank != null ">
+			BANK_RISK_RANK = #{ bankRiskRank,jdbcType=VARCHAR},
+		</if>
+			 <if test="alarmTime != null ">
+			ALARM_TIME = #{ alarmTime,jdbcType=VARCHAR},
+		</if>
+			 <if test="alarmType != null ">
+			ALARM_TYPE = #{ alarmType,jdbcType=VARCHAR},
+		</if>
+			 <if test="alarmSource != null ">
+			ALARM_SOURCE = #{ alarmSource,jdbcType=VARCHAR},
+		</if>
+			 <if test="alarmrulecode != null ">
+			ALARMRULECODE = #{ alarmrulecode,jdbcType=VARCHAR},
+		</if>
+			 <if test="bankrulecode != null ">
+			BANKRULECODE = #{ bankrulecode,jdbcType=VARCHAR},
+		</if>
+			 <if test="sysrulecode != null ">
+			SYSRULECODE = #{ sysrulecode,jdbcType=VARCHAR},
+		</if>
+			 <if test="checkStatus != null ">
+			CHECK_STATUS = #{ checkStatus,jdbcType=VARCHAR},
+		</if>
+			 <if test="checkRecord != null ">
+			CHECK_RECORD = #{ checkRecord,jdbcType=VARCHAR},
+		</if>
+			 <if test="checkTime != null ">
+			CHECK_TIME = #{ checkTime,jdbcType=VARCHAR},
+		</if>
+			 <if test="checkTel != null ">
+			CHECK_TEL = #{ checkTel,jdbcType=VARCHAR},
+		</if>
+			 <if test="checkUser != null ">
+			CHECK_USER = #{ checkUser,jdbcType=VARCHAR},
+		</if>
+			 <if test="isCase != null ">
+			IS_CASE = #{ isCase,jdbcType=VARCHAR},
+		</if>
+			 <if test="recheckRecord != null ">
+			RECHECK_RECORD = #{ recheckRecord,jdbcType=VARCHAR},
+		</if>
+			 <if test="riskCtrl != null ">
+			RISK_CTRL = #{ riskCtrl,jdbcType=VARCHAR},
+		</if>
+			 <if test="recheckTime != null ">
+			RECHECK_TIME = #{ recheckTime,jdbcType=VARCHAR},
+		</if>
+			 <if test="recheckTel != null ">
+			RECHECK_TEL = #{ recheckTel,jdbcType=VARCHAR},
+		</if>
+			 <if test="recheckUser != null ">
+			RECHECK_USER = #{ recheckUser,jdbcType=VARCHAR},
+		</if>
+			 <if test="createTime != null ">
+			CREATE_TIME = #{ createTime,jdbcType=VARCHAR},
+		</if>
+			 <if test="createUser != null ">
+			CREATE_USER = #{ createUser,jdbcType=VARCHAR},
+		</if>
+			 <if test="processDate != null ">
+			PROCESS_DATE = #{ processDate,jdbcType=VARCHAR},
+		</if>
+			 <if test="chanMerchNo != null ">
+			CHAN_MERCH_NO = #{ chanMerchNo,jdbcType=VARCHAR},
+		</if>
+			 <if test="chanTermNo != null ">
+			CHAN_TERM_NO = #{ chanTermNo,jdbcType=VARCHAR},
+		</if>
+			 <if test="sysruledesc != null ">
+			SYSRULEDESC = #{ sysruledesc,jdbcType=VARCHAR},
+		</if>
+			 <if test="areaCode != null ">
+			AREA_CODE = #{ areaCode,jdbcType=VARCHAR},
+		</if>
+			 <if test="transAreaCode != null ">
+			TRANS_AREA_CODE = #{ transAreaCode,jdbcType=VARCHAR},
+		</if>
+			 
+		</where>
+	</select>
+
+</mapper>

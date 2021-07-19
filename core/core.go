@@ -1,26 +1,26 @@
 package main
 
 import (
-	"fastcode-gen/core/mapper"
-	"fastcode-gen/core/model"
-	"fastcode-gen/core/service"
-	"fastcode-gen/core/test"
-	"fastcode-gen/core/xml"
-	"fastcode-gen/utils"
+	"database/sql"
 	"log"
 	"strings"
 	"time"
 
 	conf "fastcode-gen/config"
+	"fastcode-gen/core/mapper"
+	"fastcode-gen/core/model"
+	"fastcode-gen/core/service"
+	"fastcode-gen/core/test"
+	"fastcode-gen/core/xml"
 	"fastcode-gen/db"
+	"fastcode-gen/db/mysql"
 	"fastcode-gen/db/oracle"
+	"fastcode-gen/utils"
 )
 
 func main() {
-	//author := ""
-	//packageName := "com.jlpay.manage.sim"
 	generateFolder("./out/")
-	tables := GetTable()
+	tables := GetOracleTable()
 	for _, table := range tables {
 		model.GenModelCode(table)
 		service.GenServiceCode(table)
@@ -31,10 +31,19 @@ func main() {
 	}
 }
 
-func GetTable() []db.Table {
+func GetDialect() (DB *sql.DB, sqls []string) {
 	t := strings.Split(conf.Config.Tables, ",")
-	sqls := getTableStructOracleSql(t)
-	DB := oracle.GetDB()
+	sqls = getTableStructSql(t, conf.Config.Db.Dialect)
+	if utils.IsMysql(conf.Config.Db.Dialect) {
+		DB = mysql.GetDB()
+	} else {
+		DB = oracle.GetDB()
+	}
+	return
+}
+
+func GetOracleTable() []db.Table {
+	DB, sqls := GetDialect()
 	var tables []db.Table
 	for _, sql := range sqls {
 		var table db.Table
@@ -50,6 +59,9 @@ func GetTable() []db.Table {
 			err := rows.Scan(&table.Name, &tableStruct.Column, &tableStruct.Type, &tableStruct.Comment)
 			if err != nil {
 				log.Fatal(err)
+			}
+			if utils.IsMysql(conf.Config.Db.Dialect) {
+				tableStruct.Column = utils.UpperToCamel(tableStruct.Column)
 			}
 			table.TableName = table.Name
 			tableStruct.OriColumn = strings.ToUpper(tableStruct.Column)

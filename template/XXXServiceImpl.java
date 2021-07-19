@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+
 /**
  * @Author：{{ .Author}}
  * @CreateTime：{{ .Time }}
@@ -31,7 +32,7 @@ public class {{ .Name }}ServiceImpl implements I{{ .Name }}Service {
 
     @Override
     public int update({{ .Name }} {{ .LowName }}) {
-         mapper.update(termConfig);
+         return mapper.update({{ .LowName }});
     }
 
 	@Override
@@ -45,7 +46,7 @@ public class {{ .Name }}ServiceImpl implements I{{ .Name }}Service {
 	}
 	
 	@Override
-	public int list{{ .Name }}ByPage({{ .Name }} queryParam, Pagination pagination) {
+	public void list{{ .Name }}ByPage({{ .Name }} queryParam, Pagination pagination) {
 		List<{{ .Name }}> list = mapper.list{{ .Name }}ByPage(queryParam, pagination.getPageBounds());
 		pagination.setRows(list);
 		try {

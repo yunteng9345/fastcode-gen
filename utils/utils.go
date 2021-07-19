@@ -59,11 +59,34 @@ func LowerFirst(str string) string {
 }
 
 func GetType(tp string) string {
-	if strings.Contains(tp, "DATE") {
+	if strings.Contains(tp, "DATE") || strings.Contains(strings.ToLower(tp), "date") ||
+		strings.Contains(strings.ToLower(tp), "time") {
 		return "Date"
 	} else if strings.Contains(tp, "NUMBER") {
 		return "BigDecimal"
-	} else {
+	} else if strings.Contains(tp, "VARCHAR") {
 		return "String"
 	}
+	return "String"
+}
+
+func IsMysql(dialect string) bool {
+	return strings.Contains(dialect, "mysql")
+}
+
+func UpperToCamel(str string) string {
+	str = strings.ToLower(str)
+	newStr := []byte{}
+	if strings.Contains(str, "_") {
+		newStr = append(newStr, str[0]-32)
+		for i := 1; i < len(str); i++ {
+			if string(str[i-1]) == "_" {
+				newStr = append(newStr, str[i]-32)
+			} else {
+				newStr = append(newStr, str[i])
+			}
+		}
+		return string(newStr)
+	}
+	return UpperFirst(str)
 }

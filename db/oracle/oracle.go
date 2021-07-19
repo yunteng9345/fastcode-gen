@@ -2,6 +2,7 @@ package oracle
 
 import (
 	"database/sql"
+	"fastcode-gen/utils"
 	"fmt"
 	"log"
 
@@ -17,6 +18,9 @@ func GetDB() *sql.DB {
 }
 
 func init() {
+	if utils.IsMysql(conf.Config.Db.Dialect) {
+		return
+	}
 	// 用户名/密码@IP:端口/实例名
 	osqlInfo := fmt.Sprintf("%s/%s@%s:%s/%s", conf.Config.Db.User, conf.Config.Db.Password, conf.Config.Db.Ip,
 		conf.Config.Db.Port, conf.Config.Db.Dbname)

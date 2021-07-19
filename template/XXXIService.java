@@ -18,5 +18,5 @@ public interface I{{ .Name }}Service {
 
     List<{{.Name}}> list{{.Name}}({{.Name}} {{.LowName}});
 
-    int list{{.Name}}ByPage({{.Name}} {{.LowName}}, Pagination pagination);
+    void list{{.Name}}ByPage({{.Name}} {{.LowName}}, Pagination pagination);
 }

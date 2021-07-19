@@ -23,7 +23,7 @@ public class {{ .Name }}ServiceTest {
         {{ .Name }} {{ .LowName }} = new {{ .Name }}();
        {{range $i, $el := .TableStruct}} {{$el.LowName}}.set{{$el.FirstUpperName}}("{{$el.FirstUpperName}}");
        {{end}}
-        Assert.assertEquals(1, i{{ .Name }}Service.update({{ .LowName }}));
+        Assert.assertEquals(1, i{{ .Name }}Service.save({{ .LowName }}));
     }
 
     @Test

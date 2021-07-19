@@ -1,0 +1,21 @@
+filePath:
+author: yunteng
+# 英文逗号分隔
+tables: xxx,xxx,xxx
+
+db:
+  # oracle or mysql
+  dialect: mysql
+  ip: xxx.xxx.xxx.xx
+  port: 3506
+  user: root
+  password: xxxxxx
+  dbname: xxx
+#db:
+#  # oracle or mysql
+#  dialect: oracle
+#  ip: xxx.xxx.xxx.xx
+#  port: 1521
+#  user: root
+#  password: 123456
+#  dbname: xxx
