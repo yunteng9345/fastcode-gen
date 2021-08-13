@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jlpay.manage.sim.db.mapper.InfoUploadListMapper">
+	<resultMap id="BaseResultMap" type="com.jlpay.manage.sim.db.model.InfoUploadList">
+		<!--@mbg.generated-->
+		 <id column="IPC_TYPE" jdbcType="VARCHAR" property="ipcType"/>
+		 <result column="REQUEST_ID" jdbcType="VARCHAR" property="requestId"/>
+		 <result column="REQUEST_TIME" jdbcType="VARCHAR" property="requestTime"/>
+		 <result column="REQUEST_URL" jdbcType="VARCHAR" property="requestUrl"/>
+		 <result column="RESPONSE_CODE" jdbcType="VARCHAR" property="responseCode"/>
+		 <result column="RESPONSE_TIME" jdbcType="VARCHAR" property="responseTime"/>
+		 <result column="SOURCE" jdbcType="VARCHAR" property="source"/>
+		 <result column="STATUS" jdbcType="VARCHAR" property="status"/>
+		 <result column="UPLOAD_FLAG" jdbcType="VARCHAR" property="uploadFlag"/>
+		
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		<!--@mbg.generated-->
+		IPC_TYPE ,REQUEST_ID ,REQUEST_TIME ,REQUEST_URL ,RESPONSE_CODE ,RESPONSE_TIME ,SOURCE ,STATUS ,UPLOAD_FLAG 
+	</sql>
+
+	<select id="getById" parameterType="java.lang.String" resultMap="BaseResultMap">
+		<!--@mbg.generated-->
+		select
+			<include refid="Base_Column_List"/>
+		from t_info_upload_list
+		 where IPC_TYPE = #{ ipcType,jdbcType=VARCHAR}
+		
+	</select>
+
+	<insert id="insert" parameterType="com.jlpay.manage.sim.db.model.InfoUploadList">
+		<!--@mbg.generated-->
+		insert into t_info_upload_list( IPC_TYPE ,REQUEST_ID ,REQUEST_TIME ,REQUEST_URL ,RESPONSE_CODE ,RESPONSE_TIME ,SOURCE ,STATUS ,UPLOAD_FLAG )
+		values(
+		 #{ ipcType, jdbcType=VARCHAR}  , #{ requestId, jdbcType=VARCHAR}  , #{ requestTime, jdbcType=VARCHAR}  , #{ requestUrl, jdbcType=VARCHAR}  , #{ responseCode, jdbcType=VARCHAR}  , #{ responseTime, jdbcType=VARCHAR}  , #{ source, jdbcType=VARCHAR}  , #{ status, jdbcType=VARCHAR}  , #{ uploadFlag, jdbcType=VARCHAR}  )
+	</insert>
+
+	<update id="updateNotNull" parameterType="com.jlpay.manage.sim.db.model.InfoUploadList">
+		<!--@mbg.generated-->
+		update t_info_upload_list
+		<set>
+			 <if test="requestId != null ">
+			    REQUEST_ID = #{ requestId,jdbcType=VARCHAR},
+			</if>
+			 <if test="requestTime != null ">
+			    REQUEST_TIME = #{ requestTime,jdbcType=VARCHAR},
+			</if>
+			 <if test="requestUrl != null ">
+			    REQUEST_URL = #{ requestUrl,jdbcType=VARCHAR},
+			</if>
+			 <if test="responseCode != null ">
+			    RESPONSE_CODE = #{ responseCode,jdbcType=VARCHAR},
+			</if>
+			 <if test="responseTime != null ">
+			    RESPONSE_TIME = #{ responseTime,jdbcType=VARCHAR},
+			</if>
+			 <if test="source != null ">
+			    SOURCE = #{ source,jdbcType=VARCHAR},
+			</if>
+			 <if test="status != null ">
+			    STATUS = #{ status,jdbcType=VARCHAR},
+			</if>
+			 <if test="uploadFlag != null ">
+			    UPLOAD_FLAG = #{ uploadFlag,jdbcType=VARCHAR},
+			</if>
+			 
+		</set>  
+		where IPC_TYPE = #{ ipcType,jdbcType=VARCHAR}
+		                 
+	</update>
+
+	<update id="update" parameterType="com.jlpay.manage.sim.db.model.InfoUploadList">
+		<!--@mbg.generated-->
+		update t_info_upload_list
+		<set> 
+			IPC_TYPE = #{ ipcType,jdbcType=VARCHAR},
+			REQUEST_ID = #{ requestId,jdbcType=VARCHAR},
+			REQUEST_TIME = #{ requestTime,jdbcType=VARCHAR},
+			REQUEST_URL = #{ requestUrl,jdbcType=VARCHAR},
+			RESPONSE_CODE = #{ responseCode,jdbcType=VARCHAR},
+			RESPONSE_TIME = #{ responseTime,jdbcType=VARCHAR},
+			SOURCE = #{ source,jdbcType=VARCHAR},
+			STATUS = #{ status,jdbcType=VARCHAR},
+			UPLOAD_FLAG = #{ uploadFlag,jdbcType=VARCHAR}
+		</set>  
+		where IPC_TYPE = #{ ipcType,jdbcType=VARCHAR}
+		                 
+	</update>
+
+	<select id="listInfoUploadList" resultType="com.jlpay.manage.sim.db.model.InfoUploadList">
+		SELECT
+		 IPC_TYPE AS ipcType  , REQUEST_ID AS requestId  , REQUEST_TIME AS requestTime  , REQUEST_URL AS requestUrl  , RESPONSE_CODE AS responseCode  , RESPONSE_TIME AS responseTime  , SOURCE AS source  , STATUS AS status  , UPLOAD_FLAG AS uploadFlag  
+		FROM t_info_upload_list
+		<where>
+			 <if test="requestId != null ">
+					REQUEST_ID = #{ requestId,jdbcType=VARCHAR},
+				</if>
+			 <if test="requestTime != null ">
+					REQUEST_TIME = #{ requestTime,jdbcType=VARCHAR},
+				</if>
+			 <if test="requestUrl != null ">
+					REQUEST_URL = #{ requestUrl,jdbcType=VARCHAR},
+				</if>
+			 <if test="responseCode != null ">
+					RESPONSE_CODE = #{ responseCode,jdbcType=VARCHAR},
+				</if>
+			 <if test="responseTime != null ">
+					RESPONSE_TIME = #{ responseTime,jdbcType=VARCHAR},
+				</if>
+			 <if test="source != null ">
+					SOURCE = #{ source,jdbcType=VARCHAR},
+				</if>
+			 <if test="status != null ">
+					STATUS = #{ status,jdbcType=VARCHAR},
+				</if>
+			 <if test="uploadFlag != null ">
+					UPLOAD_FLAG = #{ uploadFlag,jdbcType=VARCHAR},
+				</if>
+			 
+		</where>
+	</select>
+
+	<select id="listInfoUploadListByPage" resultType="com.jlpay.manage.sim.db.model.InfoUploadList">
+		SELECT
+		<include refid="Base_Column_List"/>
+		<where>
+			 <if test="requestId != null ">
+			REQUEST_ID = #{ requestId,jdbcType=VARCHAR},
+		</if>
+			 <if test="requestTime != null ">
+			REQUEST_TIME = #{ requestTime,jdbcType=VARCHAR},
+		</if>
+			 <if test="requestUrl != null ">
+			REQUEST_URL = #{ requestUrl,jdbcType=VARCHAR},
+		</if>
+			 <if test="responseCode != null ">
+			RESPONSE_CODE = #{ responseCode,jdbcType=VARCHAR},
+		</if>
+			 <if test="responseTime != null ">
+			RESPONSE_TIME = #{ responseTime,jdbcType=VARCHAR},
+		</if>
+			 <if test="source != null ">
+			SOURCE = #{ source,jdbcType=VARCHAR},
+		</if>
+			 <if test="status != null ">
+			STATUS = #{ status,jdbcType=VARCHAR},
+		</if>
+			 <if test="uploadFlag != null ">
+			UPLOAD_FLAG = #{ uploadFlag,jdbcType=VARCHAR},
+		</if>
+			 
+		</where>
+	</select>
+
+</mapper>

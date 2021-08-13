@@ -24,10 +24,11 @@ type config struct {
 }
 
 type DBConf struct {
-	Dialect  string `yaml:dialect`
-	Ip       string `yaml:"ip"`
-	Port     string `yaml:"port"`
-	User     string `yaml:user`
-	Password string `yaml:"password"`
-	Dbname   string `yaml:"dbname"`
+	Dialect     string `yaml:dialect`
+	Ip          string `yaml:"ip"`
+	Port        string `yaml:"port"`
+	User        string `yaml:user`
+	Password    string `yaml:"password"`
+	Dbname      string `yaml:"dbname"`
+	TableSchema string `yaml:"tableSchema"`
 }

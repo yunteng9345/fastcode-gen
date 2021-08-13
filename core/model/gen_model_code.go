@@ -13,6 +13,9 @@ func GenModelCode(table db.Table) {
 	if err != nil {
 		fmt.Println("Error happened..")
 	}
+	//for _,v := range table.TableStruct {
+	//	v.OriColumn = strings.ToLower(v.OriColumn)
+	//}
 	if err != nil {
 		log.Println("create file: ", err)
 		return
